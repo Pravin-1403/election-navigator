@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Election Navigator Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">🗳️ Election Navigator</div>
+        <div class="controls">
+            <select id="languageSelector" aria-label="Select Language">
+                <option value="English">English</option>
+                <option value="Hindi">हिंदी (Hindi)</option>
+                <option value="Marathi">मराठी (Marathi)</option>
+            </select>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="timeline-section">
+            <h2>Election Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-step active" data-step="1" onclick="queryInput.value='How do I register to vote?'; chatForm.dispatchEvent(new Event('submit'))">
+                    <div class="step-icon">📝</div>
+                    <div class="step-label">Registration</div>
+                </div>
+                <div class="timeline-step" data-step="2" onclick="queryInput.value='Tell me about election campaigns.'; chatForm.dispatchEvent(new Event('submit'))">
+                    <div class="step-icon">📢</div>
+                    <div class="step-label">Campaign</div>
+                </div>
+                <div class="timeline-step" data-step="3" onclick="queryInput.value='How do I vote?'; chatForm.dispatchEvent(new Event('submit'))">
+                    <div class="step-icon">🗳️</div>
+                    <div class="step-label">Voting</div>
+                </div>
+                <div class="timeline-step" data-step="4" onclick="queryInput.value='Where can I see election results?'; chatForm.dispatchEvent(new Event('submit'))">
+                    <div class="step-icon">📊</div>
+                    <div class="step-label">Results</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-wrapper">
+            <section class="guided-flow">
+                <h2>Your Profile</h2>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" min="1" max="120" placeholder="e.g., 25">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state">
+                            <option value="">Select your state</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="firstTimeVoter">
+                        <label for="firstTimeVoter">I am a first-time voter</label>
+                    </div>
+                </form>
+                <div class="info-card">
+                    <p>💡 Tip: Filling out your profile helps the assistant provide personalized answers!</p>
+                </div>
+            </section>
+
+            <section class="chat-section">
+                <div class="chat-header">
+                    <h2>Ask the Assistant</h2>
+                </div>
+                <div class="chat-box" id="chatBox">
+                    <div class="message ai">
+                        <div class="avatar">🤖</div>
+                        <div class="text-content">
+                            Hi! I'm your Election Navigator. How can I help you understand the Indian election process today?
+                        </div>
+                    </div>
+                </div>
+                <form id="chatForm" class="chat-input-area">
+                    <input type="text" id="queryInput" placeholder="Ask about registration, voting..." required aria-label="Ask a question">
+                    <button type="submit" id="sendBtn">Send</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
