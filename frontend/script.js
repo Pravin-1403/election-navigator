@@ -10,7 +10,7 @@ const firstTimeCheckbox = document.getElementById('firstTimeVoter');
 const languageSelector = document.getElementById('languageSelector');
 
 // API URL
-const API_URL = 'http://localhost:8000/api/ask';
+const API_URL = '/api/ask';
 
 let chatHistory = [];
 

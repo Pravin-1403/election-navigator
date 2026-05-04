@@ -13,11 +13,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+import os
+from fastapi.staticfiles import StaticFiles
+
 app.include_router(api_router, prefix="/api")
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the Election Navigator API"}
+# Get absolute path to the frontend directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, "..", "frontend")
+
+# Serve the frontend statically
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
